@@ -392,6 +392,12 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
         height: auto;
         box-shadow: none;
     }
+        
+    
+    /* NUOVA REGOLA: Aggiunge spazio extra in fondo al main */
+    main {
+        padding-bottom: 80px; /* Aggiunge 80px di spazio vuoto in fondo */
+    }
 
     /* 2. Titolo più piccolo e su più righe */
     header h1 {
