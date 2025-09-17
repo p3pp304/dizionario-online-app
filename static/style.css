@@ -383,50 +383,38 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 /* ======================================================= */
 @media (max-width: 768px) {
 
-    /* 1. Layout generale: aggiungiamo spazio in fondo */
-    body { 
-        overflow-y: auto; 
-        padding-bottom: 50px; /* Spazio di sicurezza in fondo */
-    }
+    /* 1. Layout generale */
+    body { overflow-y: auto; }
     .container {
-        margin: 0; padding: 0.5rem; /* Padding ridotto ancora */
+        margin: 0; padding: 0.5rem;
         border-radius: 0; height: auto; box-shadow: none;
+        /* Aggiungiamo un padding in fondo al container stesso */
+        padding-bottom: 100px; /* << ZONA DI SICUREZZA DI 100 PIXEL */
     }
 
     /* 2. Titoli (invariati) */
     header h1 { font-size: 1.4rem; white-space: normal; line-height: 1.3; }
     header h2 { font-size: 1.3rem; }
-
-    /* 3. Indice flottante (invariato) */
-    /* Lo manteniamo, ma il nuovo layout a griglia eviterà le sovrapposizioni */
     
-    /* --- NUOVO: LAYOUT A GRIGLIA PER IL DIZIONARIO --- */
+    /* 3. Layout a Griglia (invariato) */
     #dictionary-section {
         display: grid;
-        grid-template-columns: 1fr 1fr; /* Due colonne di larghezza uguale */
-        gap: 0.5rem; /* Spazio tra le colonne e le righe */
-        padding-right: 40px; /* Spazio a destra per non far finire i box sotto l'indice */
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        padding-right: 40px;
     }
-
-    /* Adattiamo i titoli delle sezioni per la griglia */
     .section-letter {
-        grid-column: 1 / -1; /* Il titolo della lettera occupa tutta la larghezza (entrambe le colonne) */
+        grid-column: 1 / -1;
         font-size: 1.7rem;
         margin-top: 1.5rem;
     }
-
-    /* Rimuoviamo il margine dai singoli box, ora è gestito dal 'gap' della griglia */
     .vocabolo {
-        margin-top: 0; 
+        margin-top: 0;
         padding: 0.6rem 0.8rem;
     }
-    .vocabolo .main-line { font-size: 0.9rem; } /* Testo ancora più piccolo */
+    .vocabolo .main-line { font-size: 0.9rem; }
     .vocabolo .details { font-size: 0.75rem; }
-
-    /* --- RIPRISTINO DEL PULSANTE NORMALE --- */
-    /* Non dobbiamo scrivere nulla, basta NON avere le regole per #bulk-add-form button qui dentro */
-    /* Assicuriamoci che il main abbia un po' di spazio sotto */
-    main {
-        padding-bottom: 50px;
-    }
+    
+    /* 4. Pulsante Normale (non più fisso) */
+    /* Non servono regole specifiche qui, eredita quelle desktop */
 }
