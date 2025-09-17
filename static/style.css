@@ -216,14 +216,26 @@ body {
 
 /* --- Layout Contenitore (Invariato) --- */
 .container {
-    background-color: rgba(240, 242, 245, 0.95);
-    max-width: 800px;
-    margin: 0.9rem auto;
-    padding: 1rem 1.5rem 1.5rem 1.5rem;
+    /* Sfondo semi-trasparente */
+    background-color: rgba(240, 242, 245, 0.1); /* Molto trasparente */
+    
+    /* Effetto vetro smerigliato */
+    backdrop-filter: blur(10px);
+    
+    /* Bordo luminoso per definire i contorni */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-    height: calc(100vh - 2rem);
     
+    /* Il resto rimane uguale */
+    max-width: 800px;
+    margin: 1rem auto;
+    padding: 1rem 1.5rem;
+    height: calc(100vh - 2rem);
+    overflow-y: auto;
+    position: relative;
+    margin-top: 0rem;
 }
 
 /* --- Stili Intestazione e Form --- */
@@ -272,29 +284,40 @@ header h2::after {
 /* === FINE MODIFICHE PER LE STELLE === */
 
 
-#bulk-form-section { background: #ffffff; padding: 0rem; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid #ddd; }
-
+#bulk-form-section {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    margin-bottom: 1.5rem;
+}
 /* === MODIFICHE ALLA GUIDA (RIMPICCIOLITA ANCORA) === */
 .instructions {
-    background-color: rgba(30, 30, 30, 0.7); /* Sfondo scuro semi-trasparente */
-    backdrop-filter: blur(8px); /* Effetto vetro smerigliato */
-    border: 1px solid rgba(255, 223, 126, 0.4); /* Bordo dorato semi-trasparente */
-    padding: 8px 15px;
-    margin-bottom: 1rem;
+    /* Applichiamo lo sfondo stellato */
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    background-size: cover;
+    
+    border: 2px solid #b99521; /* Bordo color oro */
+    
+    padding: 12px 18px;
+    margin-bottom: 0.2rem;
     border-radius: 8px;
+    
+    /* Ombra interna per dare profondità */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
 }
 
 .instructions h3 {
     margin: 0 0 8px 0;
-    font-size: 1rem; /* Dimensione leggermente aumentata */
+    font-size: 1rem;
     color: #ffdf7e; /* Testo color oro luminoso */
-    border-bottom: 1px solid rgba(255, 223, 126, 0.2); /* Sottile linea di separazione */
-    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 223, 126, 0.3);
+    padding-bottom: 8px;
 }
 
 .instructions p {
     margin: 10px 0 2px 0;
-    font-size: 0.9rem; /* Dimensione aumentata per leggibilità */
+    font-size: 0.9rem;
     color: #EAEAEA; /* Testo principale chiaro */
     font-weight: bold;
 }
@@ -302,19 +325,20 @@ header h2::after {
 .instructions ul, .instructions ol {
     margin: 5px 0 0 0;
     padding-left: 20px;
-    font-size: 0.85rem; /* Dimensione aumentata */
+    font-size: 0.85rem;
     color: #ccc; /* Testo secondario grigio chiaro */
 }
 
 .instructions li {
-    margin-bottom: 4px;
+    margin-bottom: 5px;
 }
 
 .instructions code {
-    background-color: rgba(0, 0, 0, 0.3); /* Sfondo scuro per il codice */
+    background-color: rgba(0, 0, 0, 0.4); /* Sfondo scuro per il codice */
     color: #ffdf7e; /* Testo del codice color oro */
     padding: 2px 5px;
     border-radius: 4px;
+    border: 1px solid rgba(255, 223, 126, 0.2); /* Bordo sottile per il codice */
 }
 /* === FINE MODIFICHE ALLA GUIDA === */
 
@@ -366,7 +390,7 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 }
 .section-letter {
     font-size: 1.8rem;
-    margin-top: 1.5rem;
+    margin-top: -1rem;
     padding-top: 1.5rem; /* Assicurati che sia padding, non margin */
     
     color: white; /* << MODIFICA CHIAVE */
@@ -376,23 +400,28 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     grid-column: 1 / -1;
     scroll-margin-top: 80px;
 }
-.vocabolo { 
-    background: #ffffff; 
-    padding: 0.5rem 0.75rem;
-    border-radius: 5px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
-    margin-top: 0;
+.vocabolo {
+    background-color: #f5f1e8; /* << Colore crema/avorio molto chiaro */
+    
+    border: 1px solid rgba(185, 149, 33, 0.4); /* << Bordo dorato semi-trasparente */
+    
+    border-radius: 6px; /* Bordi leggermente più morbidi */
+    
+    /* Ombra interna per un effetto "inciso" + ombra esterna per "sollevare" */
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.05);
+    
+    /* Il padding e il margine rimangono come li preferisci */
+    padding: 0.6rem 0.8rem;
+    margin-top: 0; /* Gestito dal gap della griglia */
+    
+    transition: all 0.2s ease-in-out; /* Aggiunge una transizione fluida */
 }
-.vocabolo .main-line { 
-    font-size: 1rem;
-    font-weight: 600; 
-}
-.vocabolo .details { 
-    color: #606770; 
-    margin-top: 0.2rem;
-    padding-left: 0.75rem;
-    border-left: 2px solid #eee; 
-    font-size: 0.88rem;
+
+/* Aggiungiamo un piccolo effetto al passaggio del mouse */
+.vocabolo:hover {
+    transform: translateY(-2px);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1), 0 5px 15px rgba(0,0,0,0.1);
+    border-color: rgba(185, 149, 33, 0.7);
 }
 
 /* Stile per il footer del form (pulsante + firma) */
@@ -414,9 +443,14 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 
 .signature {
     font-size: 0.8rem;
-    color: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png);
-    white-space: nowrap; /* Impedisce alla firma di andare a capo */
-    margin: 0; /* Rimuove i margini di default del paragrafo */
+    font-style: italic;
+    
+    /* === MODIFICA CHIAVE QUI === */
+    color: white; /* << Un grigio scuro, quasi nero, ma più morbido */
+    
+    white-space: nowrap;
+    margin: 0;
+    opacity: 0.9; /* Quasi completamente opaco per massima leggibilità */
 }
 
 /* --- STILE PER LA BARRA DI RICERCA STICKY --- */
@@ -543,7 +577,7 @@ header {
 
     /* 3. MODIFICHE AL TITOLO */
     header h1 {
-        font-size: 1.8rem;   /* << AUMENTATO LEGGERMENTE */
+        font-size: 1.7rem;   /* << AUMENTATO LEGGERMENTE */
         white-space: normal; 
         line-height: 1.3;
         /* Trucco per mandare "AND" a capo:
@@ -558,6 +592,7 @@ header {
     /* NUOVA REGOLA: Aggiunge spazio a destra per evitare sovrapposizione con l'indice */
         #bulk-form-section {
             padding-right: 45px; 
+            margin-bottom: -10rem;
         }
     /* 4. Indice e Layout a UNA COLONNA (come prima) */
     #alphabet-index { /* ... */ }
@@ -595,6 +630,8 @@ header {
     justify-content: space-between; /* Spinge gli elementi ai lati opposti */
     align-items: center; /* Allinea verticalmente al centro */
     margin-top: 10px;
+        background: transparent; 
+
 }
 
 .form-footer button {
