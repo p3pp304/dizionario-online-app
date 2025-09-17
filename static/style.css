@@ -211,6 +211,7 @@ body {
     background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
     height: 100vh;
     overflow: hidden;
+    overflow-y: auto;
 }
 
 /* --- Layout Contenitore (Invariato) --- */
@@ -222,24 +223,28 @@ body {
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
     height: calc(100vh - 2rem);
-    overflow-y: auto;
+    
 }
 
 /* --- Stili Intestazione e Form --- */
-header { text-align: center; margin-bottom: 0.3rem; }
+header {
+    text-align: center;
+    padding: 0rem 1rem -3rem 1rem; /* Spazio sopra e sotto */
+    position: relative; /* Per z-index e per non essere coperto dalle stelle */
+    z-index: 10;
+    color: #f0f2f5; /* Testo chiaro per essere visibile sullo sfondo stellato */
+}
 header h1 {
-    font-family: 'Cinzel Decorative', cursive;
-    font-size: 2rem; 
-    color: #4a4a4a; margin-top: -6px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    font-family: 'Cinzel Decorative', cursive; font-size: 1.9rem;
+    color: #FFF; /* Testo bianco */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
     white-space: nowrap;
 }
 
 /* === MODIFICHE PER LE STELLE === */
 header h2 {
-    font-family: 'Josefin Sans', sans-serif;
-    font-weight: 700; font-style: italic; font-size: 1.4rem;
-    color: #b99521; margin-top: -100px; letter-spacing: 2px;
+    font-family: 'Josefin Sans', sans-serif; font-weight: 700; font-style: italic;
+    font-size: 1.5rem; color: #ffdf7e; margin-top: -100px; letter-spacing: 2px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
     position: relative; /* Indispensabile per posizionare le stelle */
     display: inline-block; /* Per contenere correttamente le stelle */
@@ -267,19 +272,86 @@ header h2::after {
 /* === FINE MODIFICHE PER LE STELLE === */
 
 
-#bulk-form-section { background: #ffffff; padding: 0.75rem; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid #ddd; }
+#bulk-form-section { background: #ffffff; padding: 0rem; border-radius: 8px; margin-bottom: 1.2rem; border: 1px solid #ddd; }
 
 /* === MODIFICHE ALLA GUIDA (RIMPICCIOLITA ANCORA) === */
-.instructions { background-color: #fffbe6; border: 1px solid #ffeeba; border-left: 4px solid #ffc107; padding: 4px 10px; margin-bottom: 0.75rem; border-radius: 5px; }
-.instructions p { margin-top: 8px; margin-bottom: 2px; font-weight: bold; color: #856404; font-size: 0.8em; }
-.instructions h3 { margin-top: 0; margin-bottom: 4px; font-weight: bold; color: #856404; font-size: 0.9em; }
-.instructions ul, .instructions ol { margin-top: 0; margin-bottom: 0; padding-left: 15px; font-size: 0.75rem; color: #66512c; }
-.instructions li { margin-bottom: 2px; }
-.instructions code { background-color: #fff3cd; padding: 1px 3px; border-radius: 3px; }
+.instructions {
+    background-color: rgba(30, 30, 30, 0.7); /* Sfondo scuro semi-trasparente */
+    backdrop-filter: blur(8px); /* Effetto vetro smerigliato */
+    border: 1px solid rgba(255, 223, 126, 0.4); /* Bordo dorato semi-trasparente */
+    padding: 8px 15px;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.instructions h3 {
+    margin: 0 0 8px 0;
+    font-size: 1rem; /* Dimensione leggermente aumentata */
+    color: #ffdf7e; /* Testo color oro luminoso */
+    border-bottom: 1px solid rgba(255, 223, 126, 0.2); /* Sottile linea di separazione */
+    padding-bottom: 5px;
+}
+
+.instructions p {
+    margin: 10px 0 2px 0;
+    font-size: 0.9rem; /* Dimensione aumentata per leggibilità */
+    color: #EAEAEA; /* Testo principale chiaro */
+    font-weight: bold;
+}
+
+.instructions ul, .instructions ol {
+    margin: 5px 0 0 0;
+    padding-left: 20px;
+    font-size: 0.85rem; /* Dimensione aumentata */
+    color: #ccc; /* Testo secondario grigio chiaro */
+}
+
+.instructions li {
+    margin-bottom: 4px;
+}
+
+.instructions code {
+    background-color: rgba(0, 0, 0, 0.3); /* Sfondo scuro per il codice */
+    color: #ffdf7e; /* Testo del codice color oro */
+    padding: 2px 5px;
+    border-radius: 4px;
+}
 /* === FINE MODIFICHE ALLA GUIDA === */
 
-textarea { width: calc(100% - 20px); padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 0.9rem; font-family: monospace; resize: vertical; }
-textarea:focus { outline: none; border-color: #ffc107; box-shadow: 0 0 0 2px rgba(255, 193, 7, 0.25); }
+textarea {
+    width: calc(100% - 24px); /* Calcolo corretto per il padding */
+    padding: 12px;
+    margin-bottom: 10px;
+    
+    /* Applichiamo lo sfondo stellato */
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    background-size: cover;
+    
+    color: white; /* Testo bianco */
+    
+    border: 2px solid #b99521; /* Bordo color oro */
+    border-radius: 8px;
+    
+    font-size: 0.9rem;
+    font-family: monospace;
+    resize: vertical;
+    
+    /* Ombra interna per dare profondità */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    
+    transition: all 0.2s ease-in-out;
+}
+
+textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5); /* Placeholder bianco semi-trasparente */
+    font-style: italic;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #ffdf7e; /* Bordo più luminoso quando attiva */
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 0 0 3px rgba(255, 193, 7, 0.25); /* Ombra interna + aura esterna */
+}
 button { padding: 12px 25px; background-color: #ffc107; color: #1c1e21; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; transition: all 0.2s ease-in-out; }
 button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 7, 0.35); transform: translateY(-1px); }
 .message { text-align: center; padding: 8px; margin-top: 8px; border-radius: 5px; display: none; }
@@ -292,14 +364,17 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     grid-template-columns: repeat(2, 1fr);
     gap: 0.8rem;
 }
-.section-letter { 
-    font-size: 1.7rem;
-    font-weight: bold; 
+.section-letter {
+    font-size: 1.8rem;
     margin-top: 1.5rem;
-    color: #333; 
-    border-bottom: 2px solid #ffc107; 
-    padding-bottom: 0.25rem;
+    padding-top: 1.5rem; /* Assicurati che sia padding, non margin */
+    
+    color: white; /* << MODIFICA CHIAVE */
+    
+    border-bottom: 2px solid rgba(255, 223, 126, 0.5);
+    padding-bottom: 0.3rem;
     grid-column: 1 / -1;
+    scroll-margin-top: 80px;
 }
 .vocabolo { 
     background: #ffffff; 
@@ -332,51 +407,108 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     width: auto; /* Il pulsante non occupa più tutta la larghezza */
     padding: 12px 25px; /* Padding orizzontale maggiore */
     flex-grow: 1; /* Fa espandere il pulsante per occupare lo spazio disponibile */
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png);
     margin-right: 15px; /* Spazio tra pulsante e firma */
+    color: white;
 }
 
 .signature {
     font-size: 0.8rem;
-    color: #888;
+    color: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png);
     white-space: nowrap; /* Impedisce alla firma di andare a capo */
     margin: 0; /* Rimuove i margini di default del paragrafo */
 }
+
+/* --- STILE PER LA BARRA DI RICERCA STICKY --- */
+#search-bar-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 10px 0;
+    /* Rimuoviamo lo sfondo da qui per renderlo trasparente */
+    background-color: transparent; 
+    text-align: center;
+    margin-bottom: 1rem;
+    border-bottom: none; /* Rimuoviamo anche il bordo */
+    backdrop-filter: none; /* E il blur */
+}
+#search-bar {
+    width: 90%;
+    max-width: 750px;
+    padding: 10px 20px; /* Più padding per un look migliore */
+    
+    /* Applichiamo lo sfondo stellato */
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    background-size: cover; /* Adatta l'immagine per coprire l'area */
+    
+    color: white; /* Testo bianco per contrasto */
+    
+    border: 1px solid #b99521; /* Bordo color oro */
+    border-radius: 25px; /* Bordi più arrotondati */
+    font-size: 1rem;
+    
+    /* Ombre per dare profondità */
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5), 0 5px 15px rgba(0,0,0,0.3);
+    
+    transition: all 0.2s ease-in-out;
+}
+#search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.6); /* Placeholder bianco semi-trasparente */
+    font-style: italic;
+}
+
+#search-bar:focus {
+    outline: none;
+    border-color: #ffdf7e; /* Bordo più luminoso quando attiva */
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5), 0 5px 20px rgba(0,0,0,0.4), 0 0 0 3px rgba(255, 193, 7, 0.25); /* Aggiunge anche un'aura esterna */
+}
+
 
 /* === STILI PER L'INDICE DELLE LETTERE === */
 #alphabet-index {
     position: fixed;
     top: 50%;
-    right: 10px; /* Distanza dal bordo destro */
-    transform: translateY(-50%); /* Centra verticalmente */
-    background-color: rgba(255, 255, 255, 0.85);
+    right: 15px;
+    transform: translateY(-50%);
+    
+    /* === MODIFICHE CHIAVE QUI === */
+    background-color: rgba(30, 30, 30, 0.7); /* Sfondo scuro semi-trasparente */
+    backdrop-filter: blur(8px); /* Effetto vetro smerigliato */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo sottile chiaro */
+    /* ============================ */
+    
     border-radius: 10px;
     padding: 8px 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata */
     display: flex;
-    flex-direction: column; /* Impila le lettere verticalmente */
-    gap: 5px; /* Spazio tra le lettere */
-    z-index: 1000; /* Assicura che sia sopra gli altri elementi */
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1000;
 }
 
-#alphabet-index a.disabled {
-    color: #ccc;
-    pointer-events: none; /* Rende il link non cliccabile */
-    cursor: default;
+#alphabet-index a:active {
+    background-color: #ffc107; /* Oro più scuro quando cliccato */
+    color: black;
+}
+
+#alphabet-index a.disabled { 
+    color: #666; /* Manteniamo il grigio per le lettere disabilitate */
+    pointer-events: none; 
 }
 
 #alphabet-index a {
     text-decoration: none;
-    color: #333;
+    color: white; /* << LETTERE BIANCHE */
     font-weight: bold;
     font-size: 0.8rem;
     padding: 2px 6px;
     border-radius: 4px;
-    transition: background-color 0.2s, color 0.2s;
+    transition: all 0.2s;
 }
 
 #alphabet-index a:hover {
-    background-color: #ffc107;
-    color: #1c1e21;
+    background-color: #ffdf7e; /* Oro più chiaro al passaggio del mouse */
+    color: black; /* << TESTO NERO */
 }
 
 /* === NUOVA: ANIMAZIONE PER LE STELLE === */
@@ -398,6 +530,7 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     /* 1. Layout generale */
     body { overflow-y: auto; }
     .container {
+        background-color: transparent; /* << SFONDO TRASPARENTE */
         margin: 0; padding: 0.5rem;
         border-radius: 0; height: auto; box-shadow: none;
         /* Aggiungiamo un padding in fondo al container stesso */
@@ -410,7 +543,7 @@ header {
 
     /* 3. MODIFICHE AL TITOLO */
     header h1 {
-        font-size: 1.6rem;   /* << AUMENTATO LEGGERMENTE */
+        font-size: 1.8rem;   /* << AUMENTATO LEGGERMENTE */
         white-space: normal; 
         line-height: 1.3;
         /* Trucco per mandare "AND" a capo:
@@ -421,7 +554,7 @@ header {
         margin-left: auto;
         margin-right: auto;
     }
-    header h2 { font-size: 1.3rem; }
+    header h2 { font-size: 1.15rem; }
     /* NUOVA REGOLA: Aggiunge spazio a destra per evitare sovrapposizione con l'indice */
         #bulk-form-section {
             padding-right: 45px; 

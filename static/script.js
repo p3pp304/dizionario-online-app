@@ -6,7 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const bulkMessageArea = document.getElementById('bulk-message-area');
     const bulkInput = document.getElementById('bulk-input');
     const alphabetIndex = document.getElementById('alphabet-index');
-    
+    const searchBar = document.getElementById('search-bar');
+
     // Elementi del Pop-up
     const modalOverlay = document.getElementById('password-modal');
     const modalConfirmButton = document.getElementById('modal-confirm-button');
@@ -106,6 +107,34 @@ document.addEventListener('DOMContentLoaded', () => {
             showMessage('Impossibile caricare il dizionario. Server non attivo?', 'error');
         }
     }
+
+    // === GESTIONE DELLA BARRA DI RICERCA (FILTRO IN TEMPO REALE) ===
+if (searchBar) {
+    searchBar.addEventListener('input', () => {
+        const searchTerm = searchBar.value.toLowerCase().trim();
+        const tuttiIVocaboli = document.querySelectorAll('#dictionary-section .vocabolo');
+        const tutteLeSezioni = document.querySelectorAll('#dictionary-section .section-letter');
+        
+        tuttiIVocaboli.forEach(boxVocabolo => {
+            const testoDelBox = boxVocabolo.textContent.toLowerCase();
+            boxVocabolo.style.display = testoDelBox.includes(searchTerm) ? '' : 'none';
+        });
+
+        // Nasconde i titoli delle sezioni che rimangono vuote
+        tutteLeSezioni.forEach(sezione => {
+            let haVocaboliVisibili = false;
+            let nextElement = sezione.nextElementSibling;
+            while(nextElement && nextElement.classList.contains('vocabolo')) {
+                if (nextElement.style.display !== 'none') {
+                    haVocaboliVisibili = true;
+                    break;
+                }
+                nextElement = nextElement.nextElementSibling;
+            }
+            sezione.style.display = haVocaboliVisibili || !searchTerm ? '' : 'none';
+        });
+    });
+}
 
     // === 3. GESTIONE DEL POP-UP E DELL'INVIO DATI ===
     
