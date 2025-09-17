@@ -383,61 +383,58 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 /* ======================================================= */
 @media (max-width: 768px) {
 
-    /* 1. Layout generale per mobile */
-    body { overflow-y: auto; }
+    /* 1. Layout generale: aggiungiamo padding in fondo per dare spazio al pulsante fisso */
+    body { 
+        overflow-y: auto; 
+        padding-bottom: 80px; /* Spazio per il pulsante fisso */
+    }
     .container {
         margin: 0;
-        padding: 0.8rem; /* Padding leggermente ridotto */
+        padding: 0.8rem;
         border-radius: 0;
         height: auto;
         box-shadow: none;
     }
-        
-    
-    /* NUOVA REGOLA: Aggiunge spazio extra in fondo al main */
     main {
-        padding-bottom: 80px; /* Aggiunge 80px di spazio vuoto in fondo */
+        padding-bottom: 0; /* Rimuoviamo il vecchio padding da qui */
     }
 
-    /* 2. Titolo più piccolo e su più righe */
-    header h1 {
-        font-size: 1.4rem;   /* << RIDOTTO ULTERIORMENTE */
-        white-space: normal; /* Permette di andare a capo */
-        line-height: 1.3;    /* Aumenta la spaziatura tra le righe del titolo */
-    }
-    header h2 {
-        font-size: 1.3rem;
-    }
+    /* 2. Titolo (invariato) */
+    header h1 { font-size: 1.4rem; white-space: normal; line-height: 1.3; }
+    header h2 { font-size: 1.3rem; }
 
-    /* 3. Indice compatto */
-    #alphabet-index {
-        padding: 5px;
-        gap: 2px 4px;
-        margin-bottom: 1rem;
-    }
-    #alphabet-index a {
-        font-size: 0.8rem;
-        padding: 4px 6px;
-    }
-    .section-letter {
-        scroll-margin-top: 60px;
-    }
+    /* 3. Indice (invariato) */
+    #alphabet-index { padding: 5px; gap: 2px 4px; margin-bottom: 1rem; }
+    #alphabet-index a { font-size: 0.8rem; padding: 4px 6px; }
+    .section-letter { scroll-margin-top: 60px; }
 
-    /* 4. Box dei vocaboli e scritte più piccole */
-    .section-letter {
-        font-size: 1.7rem;  /* << RIDOTTO */
-        margin-top: 1.5rem;
-    }
+    /* 4. Box dei vocaboli ancora più vicini */
+    .section-letter { font-size: 1.7rem; margin-top: 1.5rem; }
     .vocabolo {
-        padding: 0.6rem 0.8rem; /* << RIDOTTO (meno spazio verticale, più orizzontale) */
-        margin-top: 0.6rem;   /* << RIDOTTO */
+        padding: 0.6rem 0.8rem;
+        margin-top: 0.4rem;   /* << RIDOTTO ULTERIORMENTE (box più vicini) */
     }
-    .vocabolo .main-line {
-        font-size: 0.95rem; /* << RIDOTTO */
-        line-height: 1.4;   /* Migliora la leggibilità del testo */
+    .vocabolo .main-line { font-size: 0.95rem; line-height: 1.4; }
+    .vocabolo .details { font-size: 0.8rem; line-height: 1.5; }
+
+    /* --- NUOVA STRATEGIA PER IL PULSANTE --- */
+    /* Rendiamo il pulsante una barra fissa in fondo allo schermo */
+    #bulk-add-form button {
+        position: fixed; /* Lo scollega dal flusso della pagina */
+        bottom: 0;       /* Lo attacca in fondo */
+        left: 0;         /* Lo attacca a sinistra */
+        right: 0;        /* Lo attacca a destra (quindi occupa tutta la larghezza) */
+        
+        /* Stile per renderlo una "barra" evidente */
+        margin: 0;
+        border-radius: 0;
+        border-top: 1px solid #e0a800;
+        box-shadow: 0 -4px 10px rgba(0,0,0,0.15);
+        z-index: 100; /* Per stare sopra a tutto */
     }
-    .vocabolo .details {
-        font-size: 0.8rem;  /* << RIDOTTO */
-        line-height: 1.5;
+    
+    /* Aggiungiamo un po' di spazio sotto la textarea per non farla finire sotto il pulsante */
+    #bulk-add-form textarea {
+        margin-bottom: 10px; 
     }
 }
