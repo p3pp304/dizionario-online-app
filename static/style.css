@@ -378,3 +378,60 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
         transform: translateY(-50%) scale(0.9);
     }
 }
+/* ======================================================= */
+/* === REGOLE SPECIFICHE PER SMARTPHONE (max-width: 768px) === */
+/* ======================================================= */
+@media (max-width: 768px) {
+
+    /* 1. Layout generale per mobile */
+    body { overflow-y: auto; }
+    .container {
+        margin: 0;
+        padding: 0.8rem; /* Padding leggermente ridotto */
+        border-radius: 0;
+        height: auto;
+        box-shadow: none;
+    }
+
+    /* 2. Titolo più piccolo e su più righe */
+    header h1 {
+        font-size: 1.4rem;   /* << RIDOTTO ULTERIORMENTE */
+        white-space: normal; /* Permette di andare a capo */
+        line-height: 1.3;    /* Aumenta la spaziatura tra le righe del titolo */
+    }
+    header h2 {
+        font-size: 1.3rem;
+    }
+
+    /* 3. Indice compatto */
+    #alphabet-index {
+        padding: 5px;
+        gap: 2px 4px;
+        margin-bottom: 1rem;
+    }
+    #alphabet-index a {
+        font-size: 0.8rem;
+        padding: 4px 6px;
+    }
+    .section-letter {
+        scroll-margin-top: 60px;
+    }
+
+    /* 4. Box dei vocaboli e scritte più piccole */
+    .section-letter {
+        font-size: 1.7rem;  /* << RIDOTTO */
+        margin-top: 1.5rem;
+    }
+    .vocabolo {
+        padding: 0.6rem 0.8rem; /* << RIDOTTO (meno spazio verticale, più orizzontale) */
+        margin-top: 0.6rem;   /* << RIDOTTO */
+    }
+    .vocabolo .main-line {
+        font-size: 0.95rem; /* << RIDOTTO */
+        line-height: 1.4;   /* Migliora la leggibilità del testo */
+    }
+    .vocabolo .details {
+        font-size: 0.8rem;  /* << RIDOTTO */
+        line-height: 1.5;
+    }
+}
