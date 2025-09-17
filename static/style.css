@@ -343,7 +343,7 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 }
 
 /* === STILI PER L'INDICE DELLE LETTERE === */
-#letter-index {
+#alphabet-index {
     position: fixed;
     top: 50%;
     right: 10px; /* Distanza dal bordo destro */
@@ -358,7 +358,13 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     z-index: 1000; /* Assicura che sia sopra gli altri elementi */
 }
 
-#letter-index a {
+#alphabet-index a.disabled {
+    color: #ccc;
+    pointer-events: none; /* Rende il link non cliccabile */
+    cursor: default;
+}
+
+#alphabet-index a {
     text-decoration: none;
     color: #333;
     font-weight: bold;
@@ -368,7 +374,7 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     transition: background-color 0.2s, color 0.2s;
 }
 
-#letter-index a:hover {
+#alphabet-index a:hover {
     background-color: #ffc107;
     color: #1c1e21;
 }
@@ -472,3 +478,62 @@ header {
     margin: 0; /* Rimuove i margini di default del paragrafo */
 }
 }
+
+/* --- STILE PER IL POP-UP (FINESTRA MODALE) --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-overlay.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    width: 90%;
+    max-width: 400px;
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.visible .modal-content {
+    transform: scale(1);
+}
+
+.modal-content h3 { margin-top: 0; font-size: 1.5rem; }
+.modal-content p { color: #666; margin-bottom: 1.5rem; }
+
+.modal-content input[type="password"] {
+    width: calc(100% - 24px);
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.modal-actions { display: flex; gap: 1rem; }
+.modal-actions button { flex: 1; }
+
+#modal-cancel-button { background-color: #6c757d; }
+#modal-cancel-button:hover { background-color: #5a6268; }
+
+#modal-confirm-button { background-color: #ffc107; }
+#modal-confirm-button:hover { background-color: #ffca2c; }

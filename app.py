@@ -59,29 +59,39 @@ def get_vocaboli():
     return jsonify(vocaboli_organizzati)
 
 # --- NUOVA API PER L'INSERIMENTO DI MASSA (BULK) ---
+# --- API PER L'INSERIMENTO DI MASSA (CON CONTROLLO PASSWORD) ---
 @app.route('/api/add_vocaboli_bulk', methods=['POST'])
 def add_vocaboli_bulk():
-    """Riceve una lista di vocaboli dal front-end e li inserisce/aggiorna nel database."""
-    vocaboli_da_aggiungere = request.json.get('vocaboli', [])
-    
+    # 1. Leggi la password segreta dal server (Render/launch.json)
+    SECRET_KEY = os.environ.get('INSERT_KEY')
+    if not SECRET_KEY:
+        return jsonify({'success': False, 'message': 'Errore di configurazione del server.'}), 500
+
+    # 2. Prendi i dati inviati dal front-end
+    data = request.json
+    chiave_inserita = data.get('chiave', '')
+    vocaboli_da_aggiungere = data.get('vocaboli', [])
+
+    # 3. VERIFICA LA PASSWORD
+    if chiave_inserita != SECRET_KEY:
+        return jsonify({'success': False, 'message': 'Password di inserimento non corretta!'}), 403
+
+    # 4. Se la password è corretta, procedi
     if not vocaboli_da_aggiungere:
         return jsonify({'success': False, 'message': 'Nessun vocabolo da aggiungere.'}), 400
 
     conteggio_successi = 0
     try:
         with engine.connect() as conn:
-            # Una transazione rende l'operazione più sicura ed efficiente.
             trans = conn.begin() 
             for voce in vocaboli_da_aggiungere:
                 parola = voce.get('parola', '').strip().capitalize()
                 if not parola:
                     continue 
 
-                # Raccoglie tutti i campi "extra" in una singola stringa per la colonna 'note'.
                 note_extra_items = {k: v for k, v in voce.items() if k not in ['parola', 'definizione', 'pos', 'espressione', 'sinonimi', 'contrari']}
                 note_extra_string = "; ".join([f"{k.replace('_', ' ').capitalize()}: {v}" for k, v in note_extra_items.items() if v])
 
-                # MODIFICATO: La query SQL ora include la colonna 'note'.
                 stmt = text("""
                     INSERT INTO vocaboli (parola, definizione, pos, espressione, sinonimi, contrari, note)
                     VALUES (:parola, :definizione, :pos, :espressione, :sinonimi, :contrari, :note)
@@ -101,14 +111,12 @@ def add_vocaboli_bulk():
                 })
                 conteggio_successi += 1
             
-            trans.commit() # Salva tutte le modifiche in un colpo solo.
+            trans.commit()
             
-        return jsonify({'success': True, 'message': f"{conteggio_successi} vocaboli sono stati aggiunti/aggiornati con successo!"})
-
+        return jsonify({'success': True, 'message': f"{conteggio_successi} vocaboli aggiunti/aggiornati!"})
     except Exception as e:
         print(f"❌ ERRORE DATABASE DURANTE INSERIMENTO BULK: {e}")
-        return jsonify({'success': False, 'message': 'Errore interno del server durante l\'inserimento di massa.'}), 500
-
+        return jsonify({'success': False, 'message': 'Errore interno del server.'}), 500
 # --- AVVIO DELL'APPLICAZIONE ---
 if __name__ == '__main__':
     setup_database()
