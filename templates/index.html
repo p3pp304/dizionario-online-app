@@ -29,53 +29,55 @@
         </header>
     
         <main>
-            <!-- SEZIONE PER L'INSERIMENTO DELLA LISTA -->
+            <!-- SEZIONE DI INSERIMENTO UNICA -->
             <section id="bulk-form-section">
 
-                <!-- ISTRUZIONI DETTAGLIATE E USER-FRIENDLY -->
+                <!-- Le istruzioni rimangono qui -->
                 <div class="instructions">
-                <h3>Guida al Formato di Inserimento</h3>
-                <ul>
-                    <li>Usa una riga per ogni vocabolo e separa i campi con il simbolo <strong>|</strong></li>
-                </ul>
-
-                <p style="margin-top: 15px;"><strong>Campi Obbligatori (i primi due):</strong></p>
-                <ol>
-                    <li><strong>Parola e Tipo:</strong> <code>Parola (pos.)</code> Esempio: <code>Accident (n.m.)</code></li>
-                    <li><strong>Definizione:</strong> <code>Testo della definizione.</code></li>
-                </ol>
-
-                <p style="margin-top: 15px;"><strong>Campi Speciali (opzionali):</strong></p>
-                <ul>
-                    <li>Usa queste chiavi per attivare una formattazione speciale:</li>
-                    <li><code>Sinonimi: val1, val2</code></li>
-                    <li><code>Contrari: val1, val2</code></li>
-                    <li><code>Espressione: testo dell'esempio</code></li>
-                </ul>
-
-                <p style="margin-top: 15px;"><strong>Altri Campi (opzionali):</strong></p>
-                <ul>
-                    <li>Puoi aggiungere qualsiasi altra informazione usando il formato <code>chiave: valore</code>. Verrà salvata nelle note.</li>
-                    <li>Esempi: <code>Campo semantico: ...</code>, <code>Note: (G.B. informale)</code>, <code>Coniugazione: go, went, gone</code></li>
-                </ul>
+                    <h3>Guida al Formato di Inserimento</h3>
+                    <!-- ... tutto il contenuto delle tue istruzioni ... -->
+                    <ul>
+                        <li>Usa una riga per ogni vocabolo e separa i campi con il simbolo <strong>|</strong></li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Campi Obbligatori (i primi due):</strong></p>
+                    <ol>
+                        <li><strong>Parola e Tipo:</strong> <code>Parola (pos.)</code> Esempio: <code>Accident (n.m.)</code></li>
+                        <li><strong>Definizione:</strong> <code>Testo della definizione.</code></li>
+                    </ol>
+                    <p style="margin-top: 15px;"><strong>Campi Speciali (opzionali):</strong></p>
+                    <ul>
+                        <li><code>Sinonimi: val1, val2</code></li>
+                        <li><code>Contrari: val1, val2</code></li>
+                        <li><code>Espressione: testo dell'esempio</code></li>
+                    </ul>
+                    <p style="margin-top: 15px;"><strong>Altri Campi (opzionali):</strong></p>
+                    <ul>
+                        <li>Esempi: <code>Campo semantico: ...</code>, <code>Note: ...</code>, <code>Coniugazione: ...</code></li>
+                    </ul>
                 </div>
+
+                <!-- Il form ora contiene la textarea e il nuovo footer -->
                 <form id="bulk-add-form">
-                     <textarea 
+                    <textarea 
                         id="bulk-input" 
                         rows="10" 
-                        placeholder="Accident (n.m.) | incidente. | Espressione: by accident...&#10;Accomplish (v.) | realizzare, raggiungere. | Sinonimi: succeed, complete..."
+                        placeholder="Accident (n.m.) | incidente. | Espressione: by accident..."
                     ></textarea>
+
+                    <!-- NUOVO: Footer per il form con pulsante e firma -->
                     <div class="form-footer">
                         <button type="submit">Add words</button>
-                        <p class="signature">made by Giuseppe Fuzio X Gemini</p>
+                        <p class="signature">by Giuseppe Fuzio X Gemini</p>
                     </div>
                 </form>
+
+                <!-- L'area messaggi va subito dopo il form -->
                 <div id="bulk-message-area" class="message"></div>
             </section>
-    
-            <!-- SEZIONE DOVE VERRA' MOSTRATA L'INTERA LISTA -->
+
+            <!-- SEZIONE PER LA LISTA DEI VOCABOLI -->
             <section id="dictionary-section">
-                <!-- Il dizionario verrà visualizzato qui dal JavaScript -->
+                <!-- Il dizionario verrà visualizzato qui -->
             </section>
         </main>
     </div>

@@ -320,20 +320,26 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     font-size: 0.88rem;
 }
 
-/* === Regole per la Firma === */
+/* Stile per il footer del form (pulsante + firma) */
 .form-footer {
-    position: relative;
-    text-align: center;
+    display: flex;
+    justify-content: space-between; /* Spinge gli elementi ai lati opposti */
+    align-items: center; /* Allinea verticalmente al centro */
+    margin-top: 10px;
 }
+
+.form-footer button {
+    width: auto; /* Il pulsante non occupa più tutta la larghezza */
+    padding: 12px 25px; /* Padding orizzontale maggiore */
+    flex-grow: 1; /* Fa espandere il pulsante per occupare lo spazio disponibile */
+    margin-right: 15px; /* Spazio tra pulsante e firma */
+}
+
 .signature {
-    margin: 0;
     font-size: 0.8rem;
-    font-style: italic;
-    color: #555;
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    color: #888;
+    white-space: nowrap; /* Impedisce alla firma di andare a capo */
+    margin: 0; /* Rimuove i margini di default del paragrafo */
 }
 
 /* === STILI PER L'INDICE DELLE LETTERE === */
@@ -417,4 +423,25 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     
     /* 4. Pulsante Normale (non più fisso) */
     /* Non servono regole specifiche qui, eredita quelle desktop */
+    /* Stile per il footer del form (pulsante + firma) */
+.form-footer {
+    display: flex;
+    justify-content: space-between; /* Spinge gli elementi ai lati opposti */
+    align-items: center; /* Allinea verticalmente al centro */
+    margin-top: 10px;
+}
+
+.form-footer button {
+    width: auto; /* Il pulsante non occupa più tutta la larghezza */
+    padding: 12px 25px; /* Padding orizzontale maggiore */
+    flex-grow: 1; /* Fa espandere il pulsante per occupare lo spazio disponibile */
+    margin-right: 15px; /* Spazio tra pulsante e firma */
+}
+
+.signature {
+    font-size: 0.8rem;
+    color: #888;
+    white-space: nowrap; /* Impedisce alla firma di andare a capo */
+    margin: 0; /* Rimuove i margini di default del paragrafo */
+}
 }
