@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Importazione Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Josefin+Sans:ital,wght@0,400;1,300&display=swap" rel="stylesheet">
+    
+    <title>Angi's Dictionary</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- NUOVO: Contenitore per l'indice fisso -->
+    <nav id="letter-index"></nav>
+    
+    <!-- Contenitori per i 3 strati di stelle animate -->
+    <div class="stars-small"></div>
+    <div class="stars-medium"></div>
+    <div class="stars-large"></div>
+
+    <!-- Nuovo contenitore per migliorare la leggibilità sullo sfondo -->
+    <div class="container">
+        <header>
+            <h1>📖 DICTIONARY OF HP AND MUCH MORE 📖</h1>
+            <h2> ANGI’S ACADEMY </h2>
+        </header>
+    
+        <main>
+            <!-- SEZIONE PER L'INSERIMENTO DELLA LISTA -->
+            <section id="bulk-form-section">
+
+                <!-- ISTRUZIONI DETTAGLIATE E USER-FRIENDLY -->
+                <div class="instructions">
+                <h3>Guida al Formato di Inserimento</h3>
+                <ul>
+                    <li>Usa una riga per ogni vocabolo e separa i campi con il simbolo <strong>|</strong></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Campi Obbligatori (i primi due):</strong></p>
+                <ol>
+                    <li><strong>Parola e Tipo:</strong> <code>Parola (pos.)</code> Esempio: <code>Accident (n.m.)</code></li>
+                    <li><strong>Definizione:</strong> <code>Testo della definizione.</code></li>
+                </ol>
+
+                <p style="margin-top: 15px;"><strong>Campi Speciali (opzionali):</strong></p>
+                <ul>
+                    <li>Usa queste chiavi per attivare una formattazione speciale:</li>
+                    <li><code>Sinonimi: val1, val2</code></li>
+                    <li><code>Contrari: val1, val2</code></li>
+                    <li><code>Espressione: testo dell'esempio</code></li>
+                </ul>
+
+                <p style="margin-top: 15px;"><strong>Altri Campi (opzionali):</strong></p>
+                <ul>
+                    <li>Puoi aggiungere qualsiasi altra informazione usando il formato <code>chiave: valore</code>. Verrà salvata nelle note.</li>
+                    <li>Esempi: <code>Campo semantico: ...</code>, <code>Note: (G.B. informale)</code>, <code>Coniugazione: go, went, gone</code></li>
+                </ul>
+                </div>
+                <form id="bulk-add-form">
+                     <textarea 
+                        id="bulk-input" 
+                        rows="10" 
+                        placeholder="Accident (n.m.) | incidente. | Espressione: by accident...&#10;Accomplish (v.) | realizzare, raggiungere. | Sinonimi: succeed, complete..."
+                    ></textarea>
+                    <div class="form-footer">
+                        <button type="submit">Add words</button>
+                        <p class="signature">made by Giuseppe Fuzio X Gemini</p>
+                    </div>
+                </form>
+                <div id="bulk-message-area" class="message"></div>
+            </section>
+    
+            <!-- SEZIONE DOVE VERRA' MOSTRATA L'INTERA LISTA -->
+            <section id="dictionary-section">
+                <!-- Il dizionario verrà visualizzato qui dal JavaScript -->
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

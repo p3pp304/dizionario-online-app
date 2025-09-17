@@ -1,0 +1,15 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "debugpy",  // <-- MODIFICA APPLICATA
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "env": {
+                "DATABASE_URL": "postgresql://neondb_owner:npg_bOuQ1D7LINpE@ep-snowy-night-agq52t6y-pooler.c-2.eu-central-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require"
+            }
+        }
+    ]
+}
