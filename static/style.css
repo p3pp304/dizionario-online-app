@@ -416,7 +416,10 @@ header {
         margin-right: auto;
     }
     header h2 { font-size: 1.3rem; }
-
+    /* NUOVA REGOLA: Aggiunge spazio a destra per evitare sovrapposizione con l'indice */
+        #bulk-form-section {
+            padding-right: 45px; 
+        }
     /* 4. Indice e Layout a UNA COLONNA (come prima) */
     #alphabet-index { /* ... */ }
     #dictionary-section {
