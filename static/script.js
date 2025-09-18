@@ -31,6 +31,36 @@ document.addEventListener('DOMContentLoaded', () => {
     function generateLetterIndex(letterePresenti) {
         if (!alphabetIndex) return;
         alphabetIndex.innerHTML = ''; // Pulisce l'indice
+
+        // === NUOVO: Crea e aggiunge il pulsante di ricerca ===
+        const searchLink = document.createElement('a');
+        searchLink.href = "#"; // Non punta a nessuna sezione
+        searchLink.innerHTML = '🔍'; // Icona di ricerca (emoji)
+        searchLink.title = "Cerca vocabolo"; // Testo che appare al passaggio del mouse
+
+        searchLink.addEventListener('click', (e) => {
+            e.preventDefault(); // Impedisce al link di funzionare normalmente
+            
+            // Trova l'elemento della barra di ricerca
+            const searchContainer = document.getElementById('search-bar-container');
+            
+            if (searchContainer) {
+                // Scorre la pagina fino a portare la barra di ricerca in cima alla vista
+                searchContainer.scrollIntoView({
+                    behavior: 'smooth', // Animazione di scorrimento fluida
+                    block: 'start'      // Allinea l'inizio dell'elemento con l'inizio della vista
+                });
+
+                // Dopo un piccolo ritardo (per dare tempo allo scorrimento),
+                // mette a fuoco il campo di input.
+                setTimeout(() => {
+                    if (searchBar) {
+                        searchBar.focus();
+                    }
+                }, 500); // 500ms di ritardo
+            }
+        });
+    alphabetIndex.appendChild(searchLink);
         
         const alfabetoCompleto = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 

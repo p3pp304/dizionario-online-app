@@ -500,155 +500,41 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
 
 
 /* === STILI PER L'INDICE DELLE LETTERE === */
+/* --- Indice Alfabetico Verticale (Dimensione Media) --- */
 #alphabet-index {
     position: fixed;
     top: 50%;
-    right: 15px;
+    right: 15px; /* Un po' più di spazio dal bordo */
     transform: translateY(-50%);
-    
-    /* === MODIFICHE CHIAVE QUI === */
-    background-color: rgba(30, 30, 30, 0.7); /* Sfondo scuro semi-trasparente */
-    backdrop-filter: blur(8px); /* Effetto vetro smerigliato */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* Bordo sottile chiaro */
-    /* ============================ */
-    
+    background-color: rgba(30, 30, 30, 0.7);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 10px;
-    padding: 8px 5px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata */
+    padding: 8px 5px; /* << PADDING AUMENTATO */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 4px; /* << SPAZIO TRA LETTERE AUMENTATO */
     z-index: 1000;
 }
-
-#alphabet-index a:active {
-    background-color: #ffc107; /* Oro più scuro quando cliccato */
-    color: black;
-}
-
-#alphabet-index a.disabled { 
-    color: #666; /* Manteniamo il grigio per le lettere disabilitate */
-    pointer-events: none; 
-}
-
 #alphabet-index a {
     text-decoration: none;
-    color: white; /* << LETTERE BIANCHE */
+    color: white;
     font-weight: bold;
-    font-size: 0.8rem;
-    padding: 2px 6px;
+    font-size: 0.8rem; /* << FONT AUMENTATO */
+    padding: 2px 6px; /* << PADDING INTERNO AUMENTATO */
     border-radius: 4px;
     transition: all 0.2s;
+    text-align: center;
 }
+#alphabet-index a:hover, #alphabet-index a:active { background-color: #ffc107; color: black; }
+#alphabet-index a.disabled { color: #666; pointer-events: none; }
 
-#alphabet-index a:hover {
-    background-color: #ffdf7e; /* Oro più chiaro al passaggio del mouse */
-    color: black; /* << TESTO NERO */
-}
-
-/* === NUOVA: ANIMAZIONE PER LE STELLE === */
-@keyframes twinkle {
-    0%, 100% {
-        opacity: 1;
-        transform: translateY(-50%) scale(1);
-    }
-    50% {
-        opacity: 0.7;
-        transform: translateY(-50%) scale(0.9);
-    }
-}
-/* ======================================================= */
-/* === REGOLE SPECIFICHE PER SMARTPHONE (max-width: 768px) === */
-/* ======================================================= */
-@media (max-width: 768px) {
-
-    /* 1. Layout generale */
-    body { overflow-y: auto; }
-    .container {
-        background-color: transparent; /* << SFONDO TRASPARENTE */
-        margin: 0; padding: 0.5rem;
-        border-radius: 0; height: auto; box-shadow: none;
-        /* Aggiungiamo un padding in fondo al container stesso */
-        padding-bottom: 100px; /* << ZONA DI SICUREZZA DI 100 PIXEL */
-    }
-
-header {
-        margin-top: 20px; /* Aggiunge spazio sopra i titoli */
-    }
-
-    /* 3. MODIFICHE AL TITOLO */
-    header h1 {
-        font-size: 1.7rem;   /* << AUMENTATO LEGGERMENTE */
-        white-space: normal; 
-        line-height: 1.3;
-        /* Trucco per mandare "AND" a capo:
-           Riduciamo la larghezza massima del titolo a poco meno dello schermo,
-           forzando il wrap in un punto prevedibile.
-        */
-        max-width: 90%;
-        margin-left: auto;
-        margin-right: auto;
-    }
-    header h2 { font-size: 1.15rem; }
-    /* NUOVA REGOLA: Aggiunge spazio a destra per evitare sovrapposizione con l'indice */
-        #bulk-form-section {
-            padding-right: 45px; 
-            margin-bottom: -10rem;
-        }
-    /* 4. Indice e Layout a UNA COLONNA (come prima) */
-    #alphabet-index { /* ... */ }
-    #dictionary-section {
-        display: block; /* Layout a una colonna */
-    }
-    .vocabolo {
-        margin-top: 0.5rem;
-    }
-    
-    /* 3. Layout a Griglia (invariato) */
-    #dictionary-section {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-        margin-top: 8rem;
-        padding-right: 40px;
-    }
-    .section-letter {
-        grid-column: 1 / -1;
-        font-size: 1.7rem;
-        margin-top: 1rem;
-    }
-    .vocabolo {
-        margin-top: 0;
-        padding: 0.6rem 0.8rem;
-    }
-    .vocabolo .main-line { font-size: 0.9rem; }
-    .vocabolo .details { font-size: 0.75rem; }
-    
-    /* 4. Pulsante Normale (non più fisso) */
-    /* Non servono regole specifiche qui, eredita quelle desktop */
-    /* Stile per il footer del form (pulsante + firma) */
-.form-footer {
-    display: flex;
-    justify-content: space-between; /* Spinge gli elementi ai lati opposti */
-    align-items: center; /* Allinea verticalmente al centro */
-    margin-top: 10px;
-        background: transparent; 
-
-}
-
-.form-footer button {
-    width: auto; /* Il pulsante non occupa più tutta la larghezza */
-    padding: 12px 25px; /* Padding orizzontale maggiore */
-    flex-grow: 1; /* Fa espandere il pulsante per occupare lo spazio disponibile */
-    margin-right: 15px; /* Spazio tra pulsante e firma */
-}
-
-.signature {
-    font-size: 0.8rem;
-    color: #888;
-    white-space: nowrap; /* Impedisce alla firma di andare a capo */
-    margin: 0; /* Rimuove i margini di default del paragrafo */
-}
+/* Separatore per il pulsante di ricerca (invariato) */
+#alphabet-index a[title="Cerca vocabolo"] {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    padding-bottom: 5px;
+    margin-bottom: 5px;
 }
 
 /* --- STILE PER IL POP-UP (FINESTRA MODALE) --- */
@@ -709,3 +595,91 @@ header {
 
 #modal-confirm-button { background-color: #ffc107; }
 #modal-confirm-button:hover { background-color: #ffca2c; }
+
+
+/* ======================================================= */
+/* === REGOLE SPECIFICHE PER SMARTPHONE (max-width: 768px) === */
+/* ======================================================= */
+@media (max-width: 768px) {
+
+    /* 1. Layout generale */
+    body { overflow-y: auto; }
+    .container {
+        background-color: transparent; /* << SFONDO TRASPARENTE */
+        margin: 0; padding: 0.5rem;
+        border-radius: 0; height: auto; box-shadow: none;
+        /* Aggiungiamo un padding in fondo al container stesso */
+        padding-bottom: 100px; /* << ZONA DI SICUREZZA DI 100 PIXEL */
+    }
+
+header {
+        margin-top: 20px; /* Aggiunge spazio sopra i titoli */
+    }
+
+    /* 3. MODIFICHE AL TITOLO */
+    header h1 {
+        font-size: 1.7rem;   /* << AUMENTATO LEGGERMENTE */
+        white-space: normal; 
+        line-height: 1.3;
+        /* Trucco per mandare "AND" a capo:
+           Riduciamo la larghezza massima del titolo a poco meno dello schermo,
+           forzando il wrap in un punto prevedibile.
+        */
+        max-width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    header h2 { font-size: 1.15rem; }
+    /* NUOVA REGOLA: Aggiunge spazio a destra per evitare sovrapposizione con l'indice */
+        #bulk-form-section {
+            padding-right: 45px; 
+            margin-bottom: -10rem;
+        }
+
+    /* 3. Layout a Griglia (invariato) */
+    #dictionary-section {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        margin-top: 8rem;
+        padding-right: 40px;
+    }
+    .section-letter {
+        grid-column: 1 / -1;
+        font-size: 1.7rem;
+        margin-top: 1rem;
+    }
+    .vocabolo {
+        margin-top: 0;
+        padding: 0.6rem 0.8rem;
+    }
+    .vocabolo .main-line { font-size: 0.9rem; }
+    .vocabolo .details { font-size: 0.75rem; }
+    
+    /* 4. Pulsante Normale (non più fisso) */
+    /* Non servono regole specifiche qui, eredita quelle desktop */
+    /* Stile per il footer del form (pulsante + firma) */
+.form-footer {
+    display: flex;
+    justify-content: space-between; /* Spinge gli elementi ai lati opposti */
+    align-items: center; /* Allinea verticalmente al centro */
+    margin-top: 10px;
+        background: transparent; 
+
+}
+
+.form-footer button {
+    width: auto; /* Il pulsante non occupa più tutta la larghezza */
+    padding: 12px 25px; /* Padding orizzontale maggiore */
+    flex-grow: 1; /* Fa espandere il pulsante per occupare lo spazio disponibile */
+    margin-right: 15px; /* Spazio tra pulsante e firma */
+}
+
+.signature {
+    font-size: 0.8rem;
+    color: #888;
+    white-space: nowrap; /* Impedisce alla firma di andare a capo */
+    margin: 0; /* Rimuove i margini di default del paragrafo */
+}
+}
+
