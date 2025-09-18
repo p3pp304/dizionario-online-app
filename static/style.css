@@ -53,9 +53,7 @@ body {
 .container {
     /* Sfondo semi-trasparente */
     background-color: transparent; /* Molto trasparente */
-    
-    /* Bordo luminoso per definire i contorni */
-    border: 1px solid rgba(255, 255, 255, 0.2);
+
     
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
@@ -67,7 +65,7 @@ body {
     height: auto;
     overflow-y: visible;
     position: relative;
-    margin-top: 0rem;
+    margin-top: -1rem;
 }
 
 /* --- Stili Intestazione e Form --- */
@@ -93,6 +91,7 @@ header h2 {
     position: relative; /* Indispensabile per posizionare le stelle */
     display: inline-block; /* Per contenere correttamente le stelle */
     padding: 0 40px; /* Aggiunge spazio laterale per le stelle */
+    margin-top: -1rem;
 }
 
 header h2::before,
@@ -124,42 +123,39 @@ header h2::after {
     margin-bottom: 1.5rem;
 }
 /* === MODIFICHE ALLA GUIDA (RIMPICCIOLITA ANCORA) === */
+/* === STILE GUIDA (PIÙ GRANDE E A TUTTA LARGHEZZA) === */
 .instructions {
-    /* Applichiamo lo sfondo stellato */
-     background: transparent;
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
     background-size: cover;
-    
-    border: 2px solid #b99521; /* Bordo color oro */
-    
-    padding: 12px 18px;
-    margin-bottom: 0.2rem;
-    border-radius: 8px;
-    
-    /* Ombra interna per dare profondità */
+    border: 2px solid #b99521;
     box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    
+    /* --- MODIFICHE CHIAVE QUI --- */
+    padding: 12px 20px;     /* << Aumentato il padding per più respiro */
+    margin-bottom: 1rem;
+    border-radius: 8px;
 }
 
 .instructions h3 {
     margin: 0 0 8px 0;
-    font-size: 1rem;
-    color: #ffdf7e; /* Testo color oro luminoso */
+    font-size: 1.1rem;      /* << Titolo più grande */
+    color: #ffdf7e;
     border-bottom: 1px solid rgba(255, 223, 126, 0.3);
     padding-bottom: 8px;
-     background: transparent;
 }
 
 .instructions p {
-    margin: 10px 0 2px 0;
-    font-size: 0.9rem;
-    color: #EAEAEA; /* Testo principale chiaro */
+    margin: 12px 0 4px 0;
+    font-size: 0.95rem;     /* << Testo più grande */
+    color: #EAEAEA;
     font-weight: bold;
 }
 
 .instructions ul, .instructions ol {
     margin: 5px 0 0 0;
     padding-left: 20px;
-    font-size: 0.85rem;
-    color: #ccc; /* Testo secondario grigio chiaro */
+    font-size: 0.9rem;      /* << Testo della lista più grande */
+    color: #ccc;
 }
 
 .instructions li {
@@ -167,13 +163,13 @@ header h2::after {
 }
 
 .instructions code {
-     background: transparent;
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffdf7e;
     padding: 2px 5px;
     border-radius: 4px;
-    border: 1px solid rgba(255, 223, 126, 0.2); /* Bordo sottile per il codice */
+    border: 1px solid rgba(255, 223, 126, 0.2);
 }
-/* === FINE MODIFICHE ALLA GUIDA === */
-
+/* === FINE NUOVO STILE === */
 textarea {
     width: calc(100% - 24px); /* Calcolo corretto per il padding */
     padding: 12px;
@@ -297,7 +293,6 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     z-index: 100;
     padding: 10px 1rem; /* Aggiunto padding laterale */
     background-color: transparent;
-    border-bottom: 1px solid #333;
     
     /* === MODIFICA CHIAVE QUI === */
     display: flex;
@@ -540,4 +535,54 @@ header {
     white-space: nowrap; /* Impedisce alla firma di andare a capo */
     margin: 0; /* Rimuove i margini di default del paragrafo */
 }
+
+/* === STILE COMPATTO PER LA GUIDA === */
+.instructions {
+    /* Manteniamo lo stile a tema */
+    background: #000 url(https://www.script-tutorials.com/demos/360/images/stars.png) repeat top center;
+    background-size: cover;
+    border: 2px solid #b99521;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+    
+    /* --- MODIFICHE CHIAVE QUI --- */
+    padding: 8px 15px;      /* << Padding verticale ridotto */
+    margin-bottom: 0.8rem;    /* << Margine inferiore ridotto */
+    border-radius: 6px;       /* << Bordi un po' meno arrotondati */
 }
+
+.instructions h3 {
+    margin: 0 0 5px 0;
+    font-size: 0.9rem;      /* << Titolo più piccolo */
+    color: #ffdf7e;
+    border-bottom: 1px solid rgba(255, 223, 126, 0.2);
+    padding-bottom: 5px;
+}
+
+.instructions p {
+    margin: 8px 0 2px 0;
+    font-size: 0.8rem;      /* << Testo più piccolo */
+    color: #EAEAEA;
+    font-weight: bold;
+}
+
+.instructions ul, .instructions ol {
+    margin: 4px 0 0 0;
+    padding-left: 18px;     /* << Meno rientro */
+    font-size: 0.75rem;     /* << Testo della lista più piccolo */
+    color: #ccc;
+}
+
+.instructions li {
+    margin-bottom: 3px;     /* << Meno spazio tra le righe */
+}
+
+.instructions code {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #ffdf7e;
+    padding: 1px 4px;       /* << Padding del codice ridotto */
+    border-radius: 3px;
+    border: 1px solid rgba(255, 223, 126, 0.2);
+}
+/* === FINE NUOVO STILE === */
+}
+
