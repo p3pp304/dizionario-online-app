@@ -459,13 +459,27 @@ button:hover { background-color: #ffca2c; box-shadow: 0 3px 12px rgba(255, 193, 
     position: sticky;
     top: 0;
     z-index: 100;
-    padding: 10px 0;
-    /* Rimuoviamo lo sfondo da qui per renderlo trasparente */
-    background-color: transparent; 
-    text-align: center;
-    margin-bottom: 1rem;
-    border-bottom: none; /* Rimuoviamo anche il bordo */
-    backdrop-filter: none; /* E il blur */
+    padding: 10px 1rem; /* Aggiunto padding laterale */
+    background-color: transparent;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid #333;
+    
+    /* === MODIFICA CHIAVE QUI === */
+    display: flex;
+    justify-content: center; /* Centra il gruppo di elementi */
+    align-items: center;   /* Allinea verticalmente */
+    gap: 15px;             /* Spazio tra la barra e il contatore */
+}
+
+/* --- Stile per il Contatore dei Vocaboli --- */
+#vocab-counter {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #b99521; /* Stesso colore oro di "Angi's Academy" */
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap; /* Impedisce di andare a capo */
+    margin: 0; /* Rimuove i margini di default */
+    padding-right: 15px; /* Spazio extra a destra */
 }
 #search-bar {
     width: 90%;
@@ -653,6 +667,16 @@ header {
         margin-top: 0;
         padding: 0.6rem 0.8rem;
     }
+
+    /* Dentro @media (max-width: 768px) */
+#alphabet-index {
+    right: 5px;
+    padding: 5px 3px;
+    gap: 2px;
+    
+    /* --- NUOVA RIGA PER SPOSTARLO IN BASSO --- */
+    top: 60%; /* Prova con questo valore, puoi aumentarlo o diminuirlo */
+}
     .vocabolo .main-line { font-size: 0.9rem; }
     .vocabolo .details { font-size: 0.75rem; }
     

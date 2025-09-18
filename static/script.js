@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const bulkInput = document.getElementById('bulk-input');
     const alphabetIndex = document.getElementById('alphabet-index');
     const searchBar = document.getElementById('search-bar');
+    const vocabCounter = document.getElementById('vocab-counter');
 
     // Elementi del Pop-up
     const modalOverlay = document.getElementById('password-modal');
@@ -96,6 +97,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch('/api/vocaboli');
             const vocaboli = await response.json();
             
+            // === NUOVA LOGICA PER IL CONTATORE ===
+        if (vocabCounter) {
+            // Calcola il totale dei vocaboli
+            let totalCount = 0;
+            // Itera su ogni lettera (A, B, C...)
+            for (const letter in vocaboli) {
+                // Aggiunge al totale il numero di parole in quella sezione
+                totalCount += Object.keys(vocaboli[letter]).length;
+            }
+            // Scrive il risultato nell'elemento HTML
+            vocabCounter.textContent = `${totalCount} vocaboli`;
+        }
+        // === FINE NUOVA LOGICA ===
             dictionarySection.innerHTML = '';
             const availableLetters = Object.keys(vocaboli);
             
